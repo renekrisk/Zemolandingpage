@@ -1,5 +1,6 @@
-import { lazy, Suspense } from 'react'
+import { lazy, Suspense, useState, useEffect } from 'react'
 import { Header } from './components/ui/header'
+import LoadingLines from './components/ui/loading-lines'
 import Hero from './components/HeroEnhanced'
 import TrustStrip from './components/TrustStrip'
 import SolutionsOverview from './components/SolutionsOverview'
@@ -18,6 +19,21 @@ const GlobalCTA = lazy(() => import('./components/GlobalCTA'))
 const Footer = lazy(() => import('./components/Footer'))
 
 function App() {
+  const [isLoading, setIsLoading] = useState(true)
+
+  useEffect(() => {
+    // Simulate loading time or wait for resources
+    const timer = setTimeout(() => {
+      setIsLoading(false)
+    }, 2500) // Show for 2.5 seconds
+
+    return () => clearTimeout(timer)
+  }, [])
+
+  if (isLoading) {
+    return <LoadingLines />
+  }
+
   return (
     <main className="min-h-screen bg-white">
       <Header />
