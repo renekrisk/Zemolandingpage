@@ -15,7 +15,7 @@ const GlobalCTA: React.FC = () => {
                         placeholder="Enter your email"
                         className="flex-1 px-6 py-4 rounded-full bg-gray-50 border border-gray-200 focus:outline-none focus:border-zemoBlue focus:ring-1 focus:ring-zemoBlue"
                     />
-                    <button className="px-8 py-4 bg-gradient-to-r from-yellow-400 to-yellow-500 hover:from-yellow-500 hover:to-yellow-600 text-gray-900 font-bold rounded-full transition-all flex items-center justify-center gap-2 shadow-sm shadow-yellow-400/20">
+                    <button className="px-8 py-4 bg-gradient-to-r from-zemoOrange to-amber-500 hover:from-amber-600 hover:to-amber-600 text-white font-bold rounded-full transition-all flex items-center justify-center gap-2 shadow-sm shadow-orange-400/25">
                         Get Started <ArrowRight size={18} />
                     </button>
                 </div>

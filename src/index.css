@@ -10,3 +10,30 @@ body {
   @apply text-gray-800 bg-gray-50;
   font-family: 'Inter', sans-serif;
 }
+
+/* Performance optimization for animations */
+.will-change-transform {
+  will-change: transform;
+}
+
+/* Optimize gradient rendering */
+@layer utilities {
+  .bg-gradient-radial {
+    background-image: radial-gradient(var(--tw-gradient-stops));
+  }
+}
+
+/* Navbar shine animation */
+@keyframes shine {
+  0% {
+    transform: translateX(-100%);
+  }
+
+  50% {
+    transform: translateX(100%);
+  }
+
+  100% {
+    transform: translateX(-100%);
+  }
+}

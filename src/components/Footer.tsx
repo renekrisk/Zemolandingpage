@@ -6,7 +6,13 @@ const Footer: React.FC = () => {
             <div className="max-w-7xl mx-auto px-4 md:px-6">
                 <div className="grid md:grid-cols-4 gap-12 mb-12">
                     <div className="col-span-1 md:col-span-1">
-                        <a href="#" className="text-2xl font-bold text-white mb-6 block">Zemo</a>
+                        <a href="#" className="inline-block mb-6">
+                            <img
+                                src="/assets/zemo-logo.png"
+                                alt="Zemo"
+                                className="h-8 w-auto brightness-0 invert"
+                            />
+                        </a>
                         <p className="text-sm leading-relaxed">
                             Zero Effort. Maximum Output. The all-in-one finance platform for Kenyan businesses.
                         </p>

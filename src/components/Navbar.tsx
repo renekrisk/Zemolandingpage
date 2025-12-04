@@ -1,4 +1,4 @@
-import React, { useState, useEffect } from 'react';
+import React, { useState, useEffect, memo } from 'react';
 import { Menu, X } from 'lucide-react';
 import { motion, AnimatePresence } from 'framer-motion';
 
@@ -7,11 +7,19 @@ const Navbar: React.FC = () => {
     const [isMobileMenuOpen, setIsMobileMenuOpen] = useState(false);
 
     useEffect(() => {
+        let timeoutId: ReturnType<typeof setTimeout>;
         const handleScroll = () => {
-            setIsScrolled(window.scrollY > 10);
+            // Debounce for performance
+            clearTimeout(timeoutId);
+            timeoutId = setTimeout(() => {
+                setIsScrolled(window.scrollY > 10);
+            }, 10);
         };
-        window.addEventListener('scroll', handleScroll);
-        return () => window.removeEventListener('scroll', handleScroll);
+        window.addEventListener('scroll', handleScroll, { passive: true });
+        return () => {
+            clearTimeout(timeoutId);
+            window.removeEventListener('scroll', handleScroll);
+        };
     }, []);
 
     const navLinks = [
@@ -27,14 +35,18 @@ const Navbar: React.FC = () => {
     return (
         <nav
             className={`fixed top-0 left-0 right-0 z-50 transition-all duration-300 ${isScrolled
-                    ? 'bg-white/80 backdrop-blur-md border-b border-gray-100 py-4'
-                    : 'bg-transparent py-6'
+                    ? 'bg-white/90 border-b border-gray-100 py-3'
+                    : 'bg-transparent py-4'
                 }`}
         >
             <div className="max-w-7xl mx-auto px-4 md:px-6 flex items-center justify-between">
                 {/* Logo */}
-                <a href="#" className="text-2xl font-bold tracking-tight bg-gradient-to-r from-yellow-500 to-orange-500 bg-clip-text text-transparent">
-                    Zemo
+                <a href="#" className="flex items-center">
+                    <img
+                        src="/assets/zemo-logo.png"
+                        alt="Zemo"
+                        className="h-8 w-auto"
+                    />
                 </a>
 
                 {/* Desktop Nav */}
@@ -46,7 +58,7 @@ const Navbar: React.FC = () => {
                             className="text-sm font-medium text-gray-600 hover:text-gray-900 transition-colors relative group"
                         >
                             {link.name}
-                            <span className="absolute -bottom-1 left-0 w-0 h-0.5 bg-yellow-400 transition-all group-hover:w-full" />
+                            <span className="absolute -bottom-1 left-0 w-0 h-0.5 bg-zemoCyan transition-all group-hover:w-full" />
                         </a>
                     ))}
                 </div>
@@ -56,7 +68,7 @@ const Navbar: React.FC = () => {
                     <button className="px-5 py-2 text-sm font-medium text-gray-700 border border-gray-200 rounded-full hover:border-gray-300 hover:bg-gray-50 transition-colors">
                         Get Started
                     </button>
-                    <button className="px-5 py-2 text-sm font-bold text-gray-900 bg-gradient-to-r from-yellow-400 to-yellow-500 rounded-full hover:from-yellow-500 hover:to-yellow-600 transition-all shadow-sm shadow-yellow-400/20">
+                    <button className="px-5 py-2 text-sm font-bold text-white bg-gradient-to-r from-zemoOrange to-amber-500 rounded-full hover:from-amber-600 hover:to-amber-600 transition-all shadow-sm shadow-orange-400/20">
                         Sign Up
                     </button>
                 </div>
@@ -84,7 +96,7 @@ const Navbar: React.FC = () => {
                                 <a
                                     key={link.name}
                                     href={link.href}
-                                    className="text-base font-medium text-gray-900 hover:text-yellow-600"
+                                    className="text-base font-medium text-gray-900 hover:text-zemoOrange"
                                     onClick={() => setIsMobileMenuOpen(false)}
                                 >
                                     {link.name}
@@ -94,7 +106,7 @@ const Navbar: React.FC = () => {
                                 <button className="w-full px-5 py-3 text-sm font-medium text-gray-700 border border-gray-200 rounded-full hover:bg-gray-50 transition-colors">
                                     Get Started
                                 </button>
-                                <button className="w-full px-5 py-3 text-sm font-bold text-gray-900 bg-gradient-to-r from-yellow-400 to-yellow-500 rounded-full hover:from-yellow-500 hover:to-yellow-600 transition-all">
+                                <button className="w-full px-5 py-3 text-sm font-bold text-white bg-gradient-to-r from-zemoOrange to-amber-500 rounded-full hover:from-amber-600 hover:to-amber-600 transition-all">
                                     Sign Up
                                 </button>
                             </div>
@@ -106,4 +118,4 @@ const Navbar: React.FC = () => {
     );
 };
 
-export default Navbar;
+export default memo(Navbar);

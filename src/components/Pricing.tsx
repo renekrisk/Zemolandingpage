@@ -1,27 +1,42 @@
 import React from 'react';
 import Section from './Section';
-import { Check } from 'lucide-react';
+import { Check, ArrowRight } from 'lucide-react';
 
 const Pricing: React.FC = () => {
     const plans = [
         {
             name: 'LITE',
-            price: 'Free',
-            desc: 'Forever.',
-            features: ['Payroll for up to 5 employees', 'Basic Expense Tracking', 'Standard Reports']
+            subtitle: 'SUITABLE FOR STARTUPS & SMALL BUSINESSES',
+            features: [
+                'Up to 3 Employees',
+                'Expense management',
+                'Analytics & Budgeting'
+            ],
         },
         {
             name: 'GROWTH',
-            price: 'KES 2,500',
-            period: '/month',
+            subtitle: 'IDEAL FOR GROWING BUSINESSES',
             highlight: true,
-            features: ['Payroll for up to 50 employees', 'Advanced Expense Management', 'Smart Reporting', 'Priority Support']
+            features: [
+                'EVERYTHING IN LITE',
+                '&',
+                'Up to 100 Employees',
+                'Free Payroll',
+                'Expense & Payroll reports',
+                '24 hour support'
+            ],
         },
         {
             name: 'ENTERPRISE',
-            price: 'Custom',
-            desc: 'Contact Sales',
-            features: ['Unlimited Payroll', 'Custom Integrations', 'Dedicated Account Manager', 'SLA Support']
+            subtitle: 'TAILORED SOLUTIONS FOR LARGE ORGANIZATIONS',
+            features: [
+                'EVERYTHING IN GROWTH',
+                '&',
+                'Unlimited Employees',
+                'ERP Integration',
+                'Management Reporting',
+                'Forecasting & Scenario Planning'
+            ],
         }
     ];
 
@@ -32,7 +47,7 @@ const Pricing: React.FC = () => {
                     Simple, Transparent Pricing
                 </h2>
                 <p className="text-lg text-gray-600">
-                    Start for free, upgrade as you grow. No hidden fees.
+                    Choose the plan that fits your business size and needs.
                 </p>
             </div>
 
@@ -43,30 +58,33 @@ const Pricing: React.FC = () => {
                         className={`
                             relative p-8 rounded-3xl border bg-white flex flex-col
                             ${plan.highlight
-                                ? 'border-yellow-300 shadow-lg scale-105 z-10'
-                                : 'border-gray-100 shadow-sm'
+                                ? 'border-orange-300 shadow-xl scale-105 z-10'
+                                : 'border-gray-100 shadow-sm hover:shadow-md transition-shadow'
                             }
                         `}
                     >
                         {plan.highlight && (
-                            <div className="absolute top-0 left-1/2 -translate-x-1/2 -translate-y-1/2 bg-gradient-to-r from-yellow-400 to-yellow-500 text-gray-900 text-xs font-bold px-4 py-1 rounded-full uppercase tracking-wider shadow-sm">
+                            <div className="absolute top-0 left-1/2 -translate-x-1/2 -translate-y-1/2 bg-gradient-to-r from-zemoOrange to-amber-500 text-white text-xs font-bold px-4 py-1 rounded-full uppercase tracking-wider shadow-sm">
                                 Most Popular
                             </div>
                         )}
 
                         <div className="mb-8">
-                            <h3 className="text-sm font-bold text-gray-400 uppercase tracking-wider mb-2">{plan.name}</h3>
-                            <div className="flex items-baseline gap-1">
-                                <span className="text-4xl font-bold text-gray-900">{plan.price}</span>
-                                {plan.period && <span className="text-gray-500">{plan.period}</span>}
-                            </div>
-                            {plan.desc && <p className="text-gray-500 mt-2">{plan.desc}</p>}
+                            <h3 className="text-lg font-bold text-gray-900 mb-2">{plan.name}</h3>
+                            <p className="text-xs text-gray-500 uppercase tracking-wide font-semibold">
+                                {plan.subtitle}
+                            </p>
                         </div>
 
-                        <ul className="space-y-4 mb-8 flex-1">
+                        <ul className="space-y-3 mb-8 flex-1">
                             {plan.features.map((feat, i) => (
-                                <li key={i} className="flex items-start gap-3 text-sm text-gray-600">
-                                    <Check size={16} className="text-yellow-600 flex-shrink-0 mt-0.5" />
+                                <li key={i} className={`flex items-start gap-3 text-sm ${feat === '&' || feat.includes('EVERYTHING')
+                                    ? 'text-zemoOrange font-bold justify-center'
+                                    : 'text-gray-600'
+                                    }`}>
+                                    {feat !== '&' && !feat.includes('EVERYTHING') && (
+                                        <Check size={16} className="text-zemoOrange flex-shrink-0 mt-0.5" />
+                                    )}
                                     {feat}
                                 </li>
                             ))}
@@ -74,17 +92,24 @@ const Pricing: React.FC = () => {
 
                         <button
                             className={`
-                                w-full py-3 rounded-full font-semibold transition-all
+                                w-full py-3 rounded-full font-semibold transition-all flex items-center justify-center gap-2
                                 ${plan.highlight
-                                    ? 'bg-gradient-to-r from-yellow-400 to-yellow-500 hover:from-yellow-500 hover:to-yellow-600 text-gray-900 shadow-sm shadow-yellow-400/20'
-                                    : 'bg-gray-50 text-gray-900 hover:bg-gray-100'
+                                    ? 'bg-gradient-to-r from-zemoOrange to-amber-500 hover:from-amber-600 hover:to-amber-600 text-white shadow-md shadow-orange-400/25'
+                                    : 'bg-white border-2 border-gray-200 text-gray-900 hover:border-zemoOrange hover:text-zemoOrange'
                                 }
                             `}
                         >
-                            Choose {plan.name}
+                            Get Started <ArrowRight size={16} />
                         </button>
                     </div>
                 ))}
+            </div>
+
+            <div className="mt-12 text-center">
+                <p className="text-sm text-gray-500">
+                    All plans include free updates and dedicated support.
+                    <a href="#contact" className="text-zemoOrange hover:underline ml-1">Need help choosing?</a>
+                </p>
             </div>
         </Section>
     );

@@ -59,7 +59,7 @@ const Contact: React.FC = () => {
                             <label className="text-sm font-medium text-gray-700">Message</label>
                             <textarea rows={4} className="w-full px-4 py-3 rounded-xl bg-gray-50 border-transparent focus:bg-white focus:border-zemoBlue focus:ring-0 transition-all" />
                         </div>
-                        <button className="w-full py-4 bg-gradient-to-r from-yellow-400 to-yellow-500 hover:from-yellow-500 hover:to-yellow-600 text-gray-900 font-bold rounded-xl transition-all shadow-sm shadow-yellow-400/20">
+                        <button className="w-full py-4 bg-gradient-to-r from-zemoOrange to-amber-500 hover:from-amber-600 hover:to-amber-600 text-white font-bold rounded-xl transition-all shadow-sm shadow-orange-400/25">
                             Send Message
                         </button>
                     </div>

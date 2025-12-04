@@ -7,8 +7,11 @@ export default {
   theme: {
     extend: {
       colors: {
-        zemoBlue: "#1E3A8A",
-        zemoYellow: "#FACC15",
+        // Updated to match actual Zemo logo colors
+        zemoOrange: "#F9A825",    // Primary Orange/Amber from logo
+        zemoCyan: "#00BCD4",       // Secondary Cyan from logo  
+        zemoBlue: "#0277BD",       // Medium Blue from logo
+        zemoYellow: "#FACC15",     // Legacy yellow (keeping for compatibility)
       },
       fontFamily: {
         sans: ['Inter', 'sans-serif'],
