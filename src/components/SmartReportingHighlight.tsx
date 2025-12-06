@@ -161,44 +161,28 @@ const SmartReportingHighlight: React.FC = () => {
                     </div>
                 </motion.div>
 
-                {/* Additional Benefits */}
-                <div className="grid md:grid-cols-3 gap-8">
-                    <motion.div
-                        initial={{ opacity: 0, y: 20 }}
-                        whileInView={{ opacity: 1, y: 0 }}
-                        viewport={{ once: true }}
-                        className="text-center p-6 bg-white rounded-2xl border border-gray-200"
-                    >
-                        <h4 className="text-xl font-bold text-gray-900 mb-3">Smart Business Dashboard</h4>
-                        <p className="text-gray-600">
-                            Track all your KPIs (sales, expenses, payroll, cash flow) in one place. No spreadsheets.
-                        </p>
-                    </motion.div>
-                    <motion.div
-                        initial={{ opacity: 0, y: 20 }}
-                        whileInView={{ opacity: 1, y: 0 }}
-                        viewport={{ once: true }}
-                        transition={{ delay: 0.1 }}
-                        className="text-center p-6 bg-white rounded-2xl border border-gray-200"
-                    >
-                        <h4 className="text-xl font-bold text-gray-900 mb-3">Real-time Alerts & Reports</h4>
-                        <p className="text-gray-600">
-                            Never miss profit drops. Zemo spots and notifies you.
-                        </p>
-                    </motion.div>
-                    <motion.div
-                        initial={{ opacity: 0, y: 20 }}
-                        whileInView={{ opacity: 1, y: 0 }}
-                        viewport={{ once: true }}
-                        transition={{ delay: 0.2 }}
-                        className="text-center p-6 bg-white rounded-2xl border border-gray-200"
-                    >
-                        <h4 className="text-xl font-bold text-gray-900 mb-3">Simple, Local & Designed for Kenya</h4>
-                        <p className="text-gray-600">
-                            Works for manufacturing, hotels, service companies, and all Kenyan businesses that need smart financial visibility.
-                        </p>
-                    </motion.div>
-                </div>
+                {/* Trust Stats Bar */}
+                <motion.div
+                    initial={{ opacity: 0, y: 20 }}
+                    whileInView={{ opacity: 1, y: 0 }}
+                    viewport={{ once: true }}
+                    className="flex flex-col md:flex-row items-center justify-center gap-12 py-12 px-8 bg-white rounded-2xl border border-gray-200"
+                >
+                    <div className="text-center">
+                        <div className="text-4xl font-bold text-gray-900 mb-1">500+</div>
+                        <div className="text-sm text-gray-600">Kenyan Businesses</div>
+                    </div>
+                    <div className="hidden md:block w-px h-12 bg-gray-200" />
+                    <div className="text-center">
+                        <div className="text-4xl font-bold text-gray-900 mb-1">10min</div>
+                        <div className="text-sm text-gray-600">Monthly Reporting</div>
+                    </div>
+                    <div className="hidden md:block w-px h-12 bg-gray-200" />
+                    <div className="text-center">
+                        <div className="text-4xl font-bold text-gray-900 mb-1">Real-time</div>
+                        <div className="text-sm text-gray-600">Financial Insights</div>
+                    </div>
+                </motion.div>
             </div>
         </section>
     );

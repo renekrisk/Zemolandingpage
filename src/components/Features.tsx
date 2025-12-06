@@ -1,82 +1,47 @@
 import React from 'react';
 import { motion } from 'framer-motion';
 import {
-    LayoutDashboard,
-    Bell,
-    Globe,
     DollarSign,
     TrendingUp,
+    LayoutDashboard,
     Shield,
-    Zap,
-    Eye,
-    Target,
     Gauge,
+    Eye,
+    Zap,
     CheckCircle,
     ArrowRight
 } from 'lucide-react';
 
 const Features: React.FC = () => {
-    const features = [
+    // Group features into main and supporting
+    const mainFeatures = [
         {
             icon: DollarSign,
             title: 'Free Payroll',
-            desc: 'Process unlimited employee salaries with zero transaction fees'
+            desc: 'Process unlimited employee salaries with zero transaction fees',
+            color: 'from-purple-500 to-purple-600'
         },
         {
             icon: TrendingUp,
             title: 'Expense Management',
-            desc: 'Track every shilling spent across your business in real time'
+            desc: 'Track every shilling spent across your business in real time',
+            color: 'from-cyan-500 to-cyan-600'
         },
         {
             icon: LayoutDashboard,
             title: 'Smart Reporting',
-            desc: 'Auto-generate profit & loss, expense trends, and payroll analytics'
-        },
-        {
-            icon: Bell,
-            title: 'Management Reporting',
-            desc: 'Executive dashboards with KPIs that matter to your business'
-        },
-        {
-            icon: Shield,
-            title: 'Policy Enforcement',
-            desc: 'Set spending limits and approval workflows automatically'
-        },
-        {
-            icon: Gauge,
-            title: 'Cash Flow Forecasting',
-            desc: 'Predict future cash positions and avoid shortfalls'
-        },
-        {
-            icon: Eye,
-            title: 'Run Finance with Clarity',
-            desc: 'See your complete financial picture in one simple dashboard'
-        },
-        {
-            icon: Zap,
-            title: 'Run Finance with Speed',
-            desc: 'Automate tedious tasks and close books 10x faster'
-        },
-        {
-            icon: CheckCircle,
-            title: 'Run Finance with Confidence',
-            desc: 'Accurate data and compliance built into every transaction'
-        },
-        {
-            icon: Target,
-            title: 'Real-time Visibility into Spending',
-            desc: 'Know exactly where your money is going, as it happens'
-        },
-        {
-            icon: Target,
-            title: 'Align Decisions',
-            desc: 'Get everyone on the same page with shared financial insights'
-        },
-        {
-            icon: TrendingUp,
-            title: 'Keep Business Moving Forward',
-            desc: 'Never let slow finance processes hold you back'
+            desc: 'Auto-generate profit & loss, expense trends, and payroll analytics',
+            color: 'from-orange-500 to-orange-600'
         }
+    ];
+
+    const capabilities = [
+        { icon: Shield, text: 'Policy Enforcement' },
+        { icon: Gauge, text: 'Cash Flow Forecasting' },
+        { icon: Eye, text: 'Real-time Visibility' },
+        { icon: Zap, text: 'Lightning Fast' },
+        { icon: CheckCircle, text: 'Always Accurate' },
+        { icon: TrendingUp, text: 'Keep Moving Forward' }
     ];
 
     return (
@@ -84,43 +49,75 @@ const Features: React.FC = () => {
             <div className="max-w-7xl mx-auto px-4 md:px-6">
                 {/* Header */}
                 <div className="text-center max-w-3xl mx-auto mb-16">
-                    <h2 className="text-4xl md:text-5xl font-bold text-gray-900 mb-6">
+                    <h2 className="text-4xl md:text-5xl font-bold text-gray-900 mb-4">
                         Why Choose Zemo
                     </h2>
+                    <div className="w-24 h-1 bg-gradient-to-r from-zemoOrange via-zemoCyan to-zemoBlue rounded-full mx-auto mb-6" />
                     <p className="text-lg md:text-xl text-gray-600">
-                        Everything you need to manage business finance with clarity, speed, and confidence
+                        Run finance with clarity, speed, and confidence
                     </p>
                 </div>
 
-                {/* Features Grid */}
-                <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-6 mb-12">
-                    {features.map((feat, idx) => (
+                {/* Main Features - Large Cards */}
+                <div className="grid md:grid-cols-3 gap-6 mb-12">
+                    {mainFeatures.map((feat, idx) => (
                         <motion.div
                             key={idx}
                             initial={{ opacity: 0, y: 20 }}
                             whileInView={{ opacity: 1, y: 0 }}
                             viewport={{ once: true }}
-                            transition={{ duration: 0.5, delay: idx * 0.05 }}
-                            className="group p-6 rounded-2xl bg-gray-50 hover:bg-white border border-gray-100 hover:border-gray-200 hover:shadow-lg transition-all"
+                            transition={{ duration: 0.5, delay: idx * 0.1 }}
+                            className="group relative p-8 rounded-3xl bg-white border-2 border-gray-100 hover:border-gray-200 hover:shadow-2xl transition-all overflow-hidden"
                         >
-                            <div className="flex items-start gap-4">
-                                <div className="flex-shrink-0 w-12 h-12 bg-white border border-gray-200 rounded-xl flex items-center justify-center group-hover:border-gray-300 group-hover:shadow transition-all">
-                                    <feat.icon size={24} className="text-gray-900" />
-                                </div>
-                                <div>
-                                    <h3 className="text-lg font-bold text-gray-900 mb-2">
-                                        {feat.title}
-                                    </h3>
-                                    <p className="text-sm text-gray-600 leading-relaxed">
-                                        {feat.desc}
-                                    </p>
-                                </div>
+                            {/* Gradient Background */}
+                            <div className={`absolute inset-0 bg-gradient-to-br ${feat.color} opacity-0 group-hover:opacity-5 transition-opacity`} />
+
+                            {/* Icon */}
+                            <div className={`relative w-16 h-16 bg-gradient-to-br ${feat.color} rounded-2xl flex items-center justify-center mb-6 shadow-lg`}>
+                                <feat.icon size={32} className="text-white" />
                             </div>
+
+                            {/* Content */}
+                            <h3 className="relative text-2xl font-bold text-gray-900 mb-3">
+                                {feat.title}
+                            </h3>
+                            <p className="relative text-gray-600 leading-relaxed">
+                                {feat.desc}
+                            </p>
                         </motion.div>
                     ))}
                 </div>
 
-                {/* CTA Button */}
+                {/* Capabilities - Compact Pills */}
+                <motion.div
+                    initial={{ opacity: 0, y: 20 }}
+                    whileInView={{ opacity: 1, y: 0 }}
+                    viewport={{ once: true }}
+                    className="bg-gray-50 rounded-3xl p-8 mb-12"
+                >
+                    <h3 className="text-xl font-bold text-gray-900 mb-6 text-center">
+                        Everything you need included
+                    </h3>
+                    <div className="flex flex-wrap gap-3 justify-center">
+                        {capabilities.map((cap, idx) => (
+                            <motion.div
+                                key={idx}
+                                initial={{ opacity: 0, scale: 0.9 }}
+                                whileInView={{ opacity: 1, scale: 1 }}
+                                viewport={{ once: true }}
+                                transition={{ duration: 0.3, delay: idx * 0.05 }}
+                                className="flex items-center gap-2 px-5 py-3 bg-white rounded-full border border-gray-200 hover:border-gray-300 hover:shadow-md transition-all group"
+                            >
+                                <cap.icon size={18} className="text-gray-700 group-hover:text-gray-900 transition-colors" />
+                                <span className="text-sm font-medium text-gray-700 group-hover:text-gray-900 transition-colors">
+                                    {cap.text}
+                                </span>
+                            </motion.div>
+                        ))}
+                    </div>
+                </motion.div>
+
+                {/* CTA */}
                 <motion.div
                     initial={{ opacity: 0, y: 20 }}
                     whileInView={{ opacity: 1, y: 0 }}
@@ -129,7 +126,7 @@ const Features: React.FC = () => {
                 >
                     <a
                         href="#about"
-                        className="inline-flex items-center gap-2 px-8 py-4 bg-gray-900 hover:bg-gray-800 text-white font-semibold rounded-xl transition-colors group"
+                        className="inline-flex items-center gap-2 px-8 py-4 bg-gradient-to-r from-zemoOrange to-amber-500 hover:from-amber-600 hover:to-amber-600 text-white font-semibold rounded-xl transition-all shadow-lg shadow-orange-500/20 group"
                     >
                         Explore More Solutions
                         <ArrowRight size={18} className="group-hover:translate-x-1 transition-transform" />
