@@ -1,16 +1,16 @@
 import React from 'react';
-import { motion } from 'framer-motion';
 
 const TrustStrip: React.FC = () => {
     const companies = [
-        'Safaricom',
-        'KCB Bank',
-        'Equity Bank',
-        'Co-operative Bank',
-        'Bamburi Cement',
-        'EABL',
-        'Tusker Mattresses',
-        'Kenya Airways'
+        'Coca-Cola',
+        'M-Pesa',
+        'Visa',
+        'Absa',
+        'Luton Hospital',
+        'Enzaribe',
+        'Brookside',
+        'Bidco',
+        'Credit Bank'
     ];
 
     return (

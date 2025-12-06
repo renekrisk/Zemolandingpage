@@ -1,5 +1,5 @@
 import { lazy, Suspense, useState, useEffect } from 'react'
-import Navbar from './components/Navbar'
+import { Header } from './components/ui/header'
 import LoadingLines from './components/ui/loading-lines'
 import Hero from './components/HeroEnhanced'
 import TrustStrip from './components/TrustStrip'
@@ -10,9 +10,10 @@ const FreePayroll = lazy(() => import('./components/FreePayroll'))
 const ExpenseManagement = lazy(() => import('./components/ExpenseManagement'))
 const SmartReporting = lazy(() => import('./components/SmartReporting'))
 const Features = lazy(() => import('./components/Features'))
+const SmartReportingHighlight = lazy(() => import('./components/SmartReportingHighlight'))
 const Pricing = lazy(() => import('./components/Pricing'))
-const Contact = lazy(() => import('./components/Contact'))
 const GlobalCTA = lazy(() => import('./components/GlobalCTA'))
+const Contact = lazy(() => import('./components/Contact'))
 const Footer = lazy(() => import('./components/Footer'))
 
 function App() {
@@ -33,7 +34,7 @@ function App() {
 
     return (
         <main className="min-h-screen bg-white">
-            <Navbar />
+            <Header />
             <Hero />
             <TrustStrip />
             <SolutionsOverview />
@@ -44,6 +45,7 @@ function App() {
                 <ExpenseManagement />
                 <SmartReporting />
                 <Features />
+                <SmartReportingHighlight />
                 <Pricing />
                 <GlobalCTA />
                 <Contact />

@@ -1,75 +1,142 @@
 import React from 'react';
-import Section from './Section';
-import { LayoutDashboard, Bell, Globe } from 'lucide-react';
+import { motion } from 'framer-motion';
+import {
+    LayoutDashboard,
+    Bell,
+    Globe,
+    DollarSign,
+    TrendingUp,
+    Shield,
+    Zap,
+    Eye,
+    Target,
+    Gauge,
+    CheckCircle,
+    ArrowRight
+} from 'lucide-react';
 
 const Features: React.FC = () => {
     const features = [
         {
+            icon: DollarSign,
+            title: 'Free Payroll',
+            desc: 'Process unlimited employee salaries with zero transaction fees'
+        },
+        {
+            icon: TrendingUp,
+            title: 'Expense Management',
+            desc: 'Track every shilling spent across your business in real time'
+        },
+        {
             icon: LayoutDashboard,
-            title: 'Smart Business Dashboard',
-            desc: 'Get a bird\'s eye view of your entire financial health in one place.',
-            gradient: 'from-zemoOrange/20 to-amber-500/10',
-            iconColor: 'text-zemoOrange'
+            title: 'Smart Reporting',
+            desc: 'Auto-generate profit & loss, expense trends, and payroll analytics'
         },
         {
             icon: Bell,
-            title: 'Real-Time Alerts',
-            desc: 'Get notified instantly for every transaction and approval request.',
-            gradient: 'from-zemoCyan/20 to-zemoBlue/10',
-            iconColor: 'text-zemoCyan'
+            title: 'Management Reporting',
+            desc: 'Executive dashboards with KPIs that matter to your business'
         },
         {
-            icon: Globe,
-            title: 'Designed for Kenya',
-            desc: 'Built specifically for local tax laws, banks, and mobile money.',
-            gradient: 'from-zemoBlue/20 to-zemoCyan/10',
-            iconColor: 'text-zemoBlue'
+            icon: Shield,
+            title: 'Policy Enforcement',
+            desc: 'Set spending limits and approval workflows automatically'
+        },
+        {
+            icon: Gauge,
+            title: 'Cash Flow Forecasting',
+            desc: 'Predict future cash positions and avoid shortfalls'
+        },
+        {
+            icon: Eye,
+            title: 'Run Finance with Clarity',
+            desc: 'See your complete financial picture in one simple dashboard'
+        },
+        {
+            icon: Zap,
+            title: 'Run Finance with Speed',
+            desc: 'Automate tedious tasks and close books 10x faster'
+        },
+        {
+            icon: CheckCircle,
+            title: 'Run Finance with Confidence',
+            desc: 'Accurate data and compliance built into every transaction'
+        },
+        {
+            icon: Target,
+            title: 'Real-time Visibility into Spending',
+            desc: 'Know exactly where your money is going, as it happens'
+        },
+        {
+            icon: Target,
+            title: 'Align Decisions',
+            desc: 'Get everyone on the same page with shared financial insights'
+        },
+        {
+            icon: TrendingUp,
+            title: 'Keep Business Moving Forward',
+            desc: 'Never let slow finance processes hold you back'
         }
     ];
 
     return (
-        <Section className="bg-white">
-            <div className="text-center max-w-2xl mx-auto mb-16">
-                <h2 className="text-3xl md:text-4xl font-bold text-gray-900 mb-6">
-                    Built for Your Success
-                </h2>
-                <p className="text-lg text-gray-600">
-                    Powerful features that make financial management effortless
-                </p>
-            </div>
+        <section id="features" className="bg-white py-24 md:py-32">
+            <div className="max-w-7xl mx-auto px-4 md:px-6">
+                {/* Header */}
+                <div className="text-center max-w-3xl mx-auto mb-16">
+                    <h2 className="text-4xl md:text-5xl font-bold text-gray-900 mb-6">
+                        Why Choose Zemo
+                    </h2>
+                    <p className="text-lg md:text-xl text-gray-600">
+                        Everything you need to manage business finance with clarity, speed, and confidence
+                    </p>
+                </div>
 
-            <div className="grid md:grid-cols-3 gap-8">
-                {features.map((feat, idx) => (
-                    <div
-                        key={idx}
-                        className="group p-8 rounded-3xl bg-gradient-to-br from-gray-50 to-white border border-gray-100 hover:border-gray-200 hover:shadow-xl transition-all duration-300 hover:scale-[1.02]"
+                {/* Features Grid */}
+                <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-6 mb-12">
+                    {features.map((feat, idx) => (
+                        <motion.div
+                            key={idx}
+                            initial={{ opacity: 0, y: 20 }}
+                            whileInView={{ opacity: 1, y: 0 }}
+                            viewport={{ once: true }}
+                            transition={{ duration: 0.5, delay: idx * 0.05 }}
+                            className="group p-6 rounded-2xl bg-gray-50 hover:bg-white border border-gray-100 hover:border-gray-200 hover:shadow-lg transition-all"
+                        >
+                            <div className="flex items-start gap-4">
+                                <div className="flex-shrink-0 w-12 h-12 bg-white border border-gray-200 rounded-xl flex items-center justify-center group-hover:border-gray-300 group-hover:shadow transition-all">
+                                    <feat.icon size={24} className="text-gray-900" />
+                                </div>
+                                <div>
+                                    <h3 className="text-lg font-bold text-gray-900 mb-2">
+                                        {feat.title}
+                                    </h3>
+                                    <p className="text-sm text-gray-600 leading-relaxed">
+                                        {feat.desc}
+                                    </p>
+                                </div>
+                            </div>
+                        </motion.div>
+                    ))}
+                </div>
+
+                {/* CTA Button */}
+                <motion.div
+                    initial={{ opacity: 0, y: 20 }}
+                    whileInView={{ opacity: 1, y: 0 }}
+                    viewport={{ once: true }}
+                    className="text-center"
+                >
+                    <a
+                        href="#about"
+                        className="inline-flex items-center gap-2 px-8 py-4 bg-gray-900 hover:bg-gray-800 text-white font-semibold rounded-xl transition-colors group"
                     >
-                        <div className={`relative w-14 h-14 bg-gradient-to-br ${feat.gradient} rounded-2xl flex items-center justify-center mb-6 shadow-sm group-hover:shadow-md transition-all duration-300 group-hover:scale-110`}>
-                            <feat.icon size={28} className={feat.iconColor} />
-                            {/* Subtle glow effect */}
-                            <div className={`absolute inset-0 bg-gradient-to-br ${feat.gradient} rounded-2xl blur-xl opacity-0 group-hover:opacity-50 transition-opacity duration-300`} />
-                        </div>
-                        <h3 className="text-xl font-bold text-gray-900 mb-3 group-hover:text-gray-900">
-                            {feat.title}
-                        </h3>
-                        <p className="text-gray-600 leading-relaxed">
-                            {feat.desc}
-                        </p>
-                    </div>
-                ))}
+                        Explore More Solutions
+                        <ArrowRight size={18} className="group-hover:translate-x-1 transition-transform" />
+                    </a>
+                </motion.div>
             </div>
-
-            {/* Decorative connecting elements */}
-            <div className="hidden md:flex justify-center items-center gap-2 mt-12">
-                {[0, 1, 2, 3, 4].map((i) => (
-                    <div
-                        key={i}
-                        className={`h-1.5 rounded-full transition-all duration-300 ${i === 2 ? 'w-12 bg-gradient-to-r from-zemoOrange to-amber-500' : 'w-1.5 bg-gray-200'
-                            }`}
-                    />
-                ))}
-            </div>
-        </Section>
+        </section>
     );
 };
 
