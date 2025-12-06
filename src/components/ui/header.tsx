@@ -129,8 +129,12 @@ export function Header() {
                             Contact Us
                         </a>
 
-                        <Button variant="outline">Sign In</Button>
-                        <Button>Get Started</Button>
+                        <Link to="/signin">
+                            <Button variant="outline">Sign In</Button>
+                        </Link>
+                        <Link to="/signup">
+                            <Button>Get Started</Button>
+                        </Link>
                     </div>
                     <Button
                         size="icon"
@@ -226,19 +230,23 @@ export function Header() {
                             <div className="my-3 border-t border-gray-200" />
 
                             <div className="flex gap-2">
-                                <Button
-                                    variant="outline"
-                                    className="flex-1 h-9 text-sm"
-                                    onClick={() => setOpen(false)}
-                                >
-                                    Sign In
-                                </Button>
-                                <Button
-                                    className="flex-1 h-9 text-sm"
-                                    onClick={() => setOpen(false)}
-                                >
-                                    Get Started
-                                </Button>
+                                <Link to="/signin" className="flex-1">
+                                    <Button
+                                        variant="outline"
+                                        className="h-9 w-full text-sm"
+                                        onClick={() => setOpen(false)}
+                                    >
+                                        Sign In
+                                    </Button>
+                                </Link>
+                                <Link to="/signup" className="flex-1">
+                                    <Button
+                                        className="h-9 w-full text-sm"
+                                        onClick={() => setOpen(false)}
+                                    >
+                                        Get Started
+                                    </Button>
+                                </Link>
                             </div>
                         </div>
                     </div>

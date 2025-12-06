@@ -73,8 +73,12 @@ export function SimpleHeader() {
                         Contact Us
                     </Link>
 
-                    <Button variant="outline">Sign In</Button>
-                    <Button>Get Started</Button>
+                    <Link to="/signin">
+                        <Button variant="outline">Sign In</Button>
+                    </Link>
+                    <Link to="/signup">
+                        <Button>Get Started</Button>
+                    </Link>
                 </div>
             </nav>
         </header>
