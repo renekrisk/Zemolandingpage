@@ -15,8 +15,14 @@ const SnowEffect: React.FC = () => {
         canvas.width = width;
         canvas.height = height;
 
-        const snowflakes: { x: number; y: number; radius: number; speed: number; wind: number }[] = [];
+        const snowflakes: { x: number; y: number; radius: number; speed: number; wind: number; color: string }[] = [];
         const snowflakeCount = 100;
+
+        const colors = [
+            'rgba(200, 210, 230, 0.9)', // Silver
+            'rgba(251, 191, 36, 0.6)',  // Soft Gold
+            'rgba(147, 197, 253, 0.8)', // Ice Blue
+        ];
 
         for (let i = 0; i < snowflakeCount; i++) {
             snowflakes.push({
@@ -25,21 +31,19 @@ const SnowEffect: React.FC = () => {
                 radius: Math.random() * 3 + 1,
                 speed: Math.random() * 1 + 0.5,
                 wind: Math.random() * 0.5 - 0.25,
+                color: colors[Math.floor(Math.random() * colors.length)],
             });
         }
 
         function draw() {
             if (!ctx || !canvas) return;
             ctx.clearRect(0, 0, width, height);
-            // Changed to a silvery-blue for visibility on white backgrounds
-            ctx.fillStyle = 'rgba(180, 190, 210, 0.9)';
-            ctx.beginPath();
 
             snowflakes.forEach((flake) => {
                 ctx.save();
                 ctx.translate(flake.x, flake.y);
                 // Draw snowflake shape (6-pointed star/hexagon lines)
-                ctx.strokeStyle = 'rgba(180, 190, 210, 0.9)';
+                ctx.strokeStyle = flake.color;
                 ctx.lineWidth = 1.5;
                 ctx.lineCap = 'round';
                 const size = flake.radius;
