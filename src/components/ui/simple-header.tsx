@@ -20,7 +20,7 @@ export function SimpleHeader() {
             className={cn(
                 'sticky top-0 z-[100] mx-auto w-full max-w-7xl border-b border-transparent md:rounded-md md:border md:transition-all md:ease-out',
                 {
-                    'bg-white/40 supports-[backdrop-filter]:bg-white/20 border-white/30 backdrop-blur-xl md:top-4 md:max-w-4xl shadow-lg shadow-black/5':
+                    'bg-white/70 supports-[backdrop-filter]:bg-white/60 border-white/40 backdrop-blur-xl md:top-4 md:max-w-4xl shadow-lg shadow-black/5':
                         scrolled,
                 },
             )}
@@ -29,15 +29,15 @@ export function SimpleHeader() {
                 className={cn(
                     'flex h-14 w-full items-center justify-between px-4 md:h-12 md:transition-all md:ease-out',
                     {
-                        'md:px-2': scrolled,
+                        'md:px-4': scrolled,
                     },
                 )}
             >
-                <Link to="/" className="flex items-center z-[102]">
+                <Link to="/" className="flex items-center z-[102] transition-transform hover:scale-105">
                     <img
                         src="/assets/zemo-logo.png"
                         alt="Zemo"
-                        className="h-6 w-auto"
+                        className="h-8 w-auto"
                     />
                 </Link>
 
