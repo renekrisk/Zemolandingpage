@@ -1,64 +1,127 @@
 import React from 'react';
-import Section from './Section';
-import { Check, X } from 'lucide-react';
+import { motion } from 'framer-motion';
+import { Check, BarChart3, TrendingUp, PieChart } from 'lucide-react';
 
 const SmartReporting: React.FC = () => {
+    const features = [
+        {
+            icon: BarChart3,
+            title: 'Custom Dashboards',
+            desc: 'Build your own views'
+        },
+        {
+            icon: TrendingUp,
+            title: 'Trend Analysis',
+            desc: 'Spot patterns early'
+        },
+        {
+            icon: PieChart,
+            title: 'Budget Tracking',
+            desc: 'Stay on target'
+        }
+    ];
+
+    const benefits = [
+        'Automated report generation',
+        'Export to Excel & PDF',
+        'Real-time data sync',
+        'Customizable metrics'
+    ];
+
     return (
-        <Section id="reporting" dark className="relative overflow-hidden">
-            {/* Subtle background accent */}
-            <div className="absolute top-0 right-0 w-[500px] h-[500px] bg-blue-500/10 rounded-full blur-3xl -translate-y-1/2 translate-x-1/2" />
+        <section className="relative bg-gradient-to-br from-orange-500 via-orange-400 to-amber-500 text-white overflow-hidden">
+            {/* Decorative elements */}
+            <div className="absolute top-0 right-0 w-1/2 h-1/2 bg-white/5 rounded-full blur-3xl" />
+            <div className="absolute bottom-0 left-0 w-1/3 h-1/3 bg-white/5 rounded-full blur-3xl" />
 
-            <div className="relative z-10">
-                <div className="text-center max-w-3xl mx-auto mb-16">
-                    <div className="inline-block px-3 py-1 bg-white/10 text-white text-xs font-bold uppercase tracking-wider rounded-full mb-6 backdrop-blur-sm">
-                        Smart Reporting
-                    </div>
-                    <h2 className="text-3xl md:text-4xl font-bold text-white mb-6">
-                        Make Decisions Based on Data, Not Guesswork
-                    </h2>
-                    <p className="text-lg text-blue-100/80">
-                        Real-time financial insights that help you optimize spending and grow your business.
-                    </p>
-                </div>
-
-                {/* Comparison Table */}
-                <div className="max-w-4xl mx-auto bg-white/5 backdrop-blur-sm rounded-3xl border border-white/10 overflow-hidden">
-                    <div className="grid grid-cols-3 p-6 border-b border-white/10 text-sm font-bold text-white/60 uppercase tracking-wider">
-                        <div className="col-span-1">Feature</div>
-                        <div className="col-span-1 text-center">Traditional Way</div>
-                        <div className="col-span-1 text-center text-zemoYellow">Zemo Way</div>
-                    </div>
-
-                    {[
-                        { feature: 'Data Updates', old: 'Monthly / Quarterly', new: 'Real-Time' },
-                        { feature: 'Expense Tracking', old: 'Manual Entry', new: 'Automated' },
-                        { feature: 'Error Rate', old: 'High Risk', new: 'Zero Errors' },
-                        { feature: 'Report Generation', old: 'Days', new: 'Seconds' },
-                    ].map((row, idx) => (
-                        <div key={idx} className="grid grid-cols-3 p-6 border-b border-white/5 hover:bg-white/5 transition-colors items-center">
-                            <div className="col-span-1 font-medium text-white">{row.feature}</div>
-                            <div className="col-span-1 text-center text-white/60">{row.old}</div>
-                            <div className="col-span-1 text-center font-bold text-white flex items-center justify-center gap-2">
-                                <Check size={16} className="text-zemoYellow" /> {row.new}
-                            </div>
+            <div className="relative z-10 max-w-7xl mx-auto px-4 md:px-6 py-24 md:py-32">
+                <div className="grid lg:grid-cols-2 gap-12 lg:gap-16 items-center">
+                    {/* Left - Content */}
+                    <motion.div
+                        initial={{ opacity: 0, x: -30 }}
+                        whileInView={{ opacity: 1, x: 0 }}
+                        viewport={{ once: true }}
+                        transition={{ duration: 0.6 }}
+                    >
+                        <div className="inline-block px-4 py-2 bg-white/20 backdrop-blur-sm rounded-full text-sm font-medium mb-6">
+                            Powerful Insights
                         </div>
-                    ))}
-                </div>
 
-                <div className="mt-16 text-center">
-                    <div className="inline-flex items-center gap-4 bg-white/10 backdrop-blur rounded-full p-2 pr-6">
-                        <div className="w-10 h-10 bg-white rounded-full flex items-center justify-center text-zemoBlue font-bold">JO</div>
-                        <div className="text-left">
-                            <div className="text-sm font-bold text-white">Jack Onyango</div>
-                            <div className="text-xs text-blue-200">Director, TechSolutions</div>
+                        <h2 className="text-4xl md:text-5xl lg:text-6xl font-bold mb-6 leading-tight">
+                            See your financial story unfold
+                        </h2>
+
+                        <p className="text-xl md:text-2xl text-orange-50 mb-10 leading-relaxed">
+                            Deep analytics and beautiful reports that help you make smarter business decisions.
+                        </p>
+
+                        {/* Benefits */}
+                        <div className="space-y-3 mb-10">
+                            {benefits.map((benefit, idx) => (
+                                <motion.div
+                                    key={idx}
+                                    initial={{ opacity: 0, x: -20 }}
+                                    whileInView={{ opacity: 1, x: 0 }}
+                                    viewport={{ once: true }}
+                                    transition={{ duration: 0.5, delay: idx * 0.1 }}
+                                    className="flex items-center gap-3"
+                                >
+                                    <div className="flex-shrink-0 w-6 h-6 rounded-full bg-white/20 flex items-center justify-center">
+                                        <Check size={14} className="text-white" />
+                                    </div>
+                                    <span className="text-lg text-white/90">{benefit}</span>
+                                </motion.div>
+                            ))}
                         </div>
-                    </div>
-                    <p className="mt-4 text-blue-100/80 italic max-w-lg mx-auto">
-                        "The reporting feature alone saved us 20 hours a month in reconciliation."
-                    </p>
+
+                        {/* Features */}
+                        <div className="grid grid-cols-1 sm:grid-cols-3 gap-6">
+                            {features.map((feature, idx) => (
+                                <motion.div
+                                    key={idx}
+                                    initial={{ opacity: 0, y: 20 }}
+                                    whileInView={{ opacity: 1, y: 0 }}
+                                    viewport={{ once: true }}
+                                    transition={{ duration: 0.5, delay: 0.4 + (idx * 0.1) }}
+                                    className="text-center"
+                                >
+                                    <div className="w-12 h-12 bg-white/20 backdrop-blur-sm rounded-xl flex items-center justify-center mx-auto mb-3">
+                                        <feature.icon size={24} className="text-white" />
+                                    </div>
+                                    <div className="text-sm font-semibold mb-1">{feature.title}</div>
+                                    <div className="text-xs text-orange-100">{feature.desc}</div>
+                                </motion.div>
+                            ))}
+                        </div>
+                    </motion.div>
+
+                    {/* Right - Phone Mockup */}
+                    <motion.div
+                        initial={{ opacity: 0, scale: 0.9 }}
+                        whileInView={{ opacity: 1, scale: 1 }}
+                        viewport={{ once: true }}
+                        transition={{ duration: 0.7, delay: 0.2 }}
+                        className="relative"
+                    >
+                        <div className="relative max-w-md lg:max-w-lg mx-auto">
+                            <motion.img
+                                src="/assets/reports-mockup.png"
+                                alt="Reports Dashboard"
+                                className="w-full drop-shadow-2xl"
+                                animate={{
+                                    y: [0, -15, 0],
+                                }}
+                                transition={{
+                                    duration: 5,
+                                    repeat: Infinity,
+                                    ease: "easeInOut"
+                                }}
+                            />
+                        </div>
+                    </motion.div>
                 </div>
             </div>
-        </Section>
+        </section>
     );
 };
 

@@ -1,5 +1,5 @@
 import React from 'react';
-import Section from './Section';
+import { motion } from 'framer-motion';
 import { Users, Receipt, BarChart3, PieChart } from 'lucide-react';
 
 const SolutionsOverview: React.FC = () => {
@@ -27,33 +27,47 @@ const SolutionsOverview: React.FC = () => {
     ];
 
     return (
-        <Section id="solutions">
-            <div className="mb-16 max-w-2xl">
-                <h2 className="text-3xl md:text-4xl font-bold text-gray-900 mb-6">
-                    Everything you need to manage business finance.
-                </h2>
-                <p className="text-lg text-gray-600">
-                    A complete suite of tools designed to work together seamlessly.
-                </p>
-            </div>
+        <section id="solutions" className="bg-white py-24 md:py-32">
+            <div className="max-w-7xl mx-auto px-4 md:px-6">
+                {/* Header */}
+                <div className="text-center max-w-3xl mx-auto mb-16">
+                    <h2 className="text-4xl md:text-5xl font-bold text-gray-900 mb-4">
+                        Everything you need to manage business finance
+                    </h2>
+                    <p className="text-lg md:text-xl text-gray-600">
+                        A complete suite of tools designed to work together seamlessly.
+                    </p>
+                </div>
 
-            <div className="grid md:grid-cols-2 gap-6">
-                {solutions.map((sol, idx) => (
-                    <div
-                        key={idx}
-                        className="p-8 rounded-3xl border border-gray-100 bg-white hover:border-blue-100 hover:shadow-sm transition-all duration-300 group"
-                    >
-                        <div className="w-12 h-12 bg-blue-50 rounded-2xl flex items-center justify-center text-zemoBlue mb-6 group-hover:scale-110 transition-transform">
-                            <sol.icon size={24} />
-                        </div>
-                        <h3 className="text-xl font-bold text-gray-900 mb-3">{sol.title}</h3>
-                        <p className="text-gray-600 leading-relaxed">
-                            {sol.desc}
-                        </p>
-                    </div>
-                ))}
+                {/* Solutions Grid */}
+                <div className="grid md:grid-cols-2 lg:grid-cols-4 gap-8">
+                    {solutions.map((sol, idx) => (
+                        <motion.div
+                            key={idx}
+                            initial={{ opacity: 0, y: 20 }}
+                            whileInView={{ opacity: 1, y: 0 }}
+                            viewport={{ once: true }}
+                            transition={{ duration: 0.5, delay: idx * 0.1 }}
+                            className="text-center group"
+                        >
+                            {/* Icon */}
+                            <div className="relative inline-flex items-center justify-center w-16 h-16 mb-6">
+                                {/* Subtle background */}
+                                <div className="absolute inset-0 bg-gray-50 rounded-2xl group-hover:bg-gray-100 transition-colors" />
+                                {/* Icon */}
+                                <sol.icon size={28} className="relative z-10 text-gray-900" />
+                            </div>
+
+                            {/* Content */}
+                            <h3 className="text-xl font-bold text-gray-900 mb-2">{sol.title}</h3>
+                            <p className="text-gray-600 leading-relaxed">
+                                {sol.desc}
+                            </p>
+                        </motion.div>
+                    ))}
+                </div>
             </div>
-        </Section>
+        </section>
     );
 };
 

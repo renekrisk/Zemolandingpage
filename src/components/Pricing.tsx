@@ -1,117 +1,108 @@
 import React from 'react';
-import Section from './Section';
-import { Check, ArrowRight } from 'lucide-react';
+import { motion } from 'framer-motion';
+import { Check } from 'lucide-react';
 
 const Pricing: React.FC = () => {
     const plans = [
         {
-            name: 'LITE',
-            subtitle: 'SUITABLE FOR STARTUPS & SMALL BUSINESSES',
+            name: 'Starter',
+            description: 'Perfect for small teams',
+            cta: 'Start Free',
             features: [
-                'Up to 3 Employees',
-                'Expense management',
-                'Analytics & Budgeting'
-            ],
+                'Up to 3 employees',
+                'Basic payroll',
+                'Expense tracking',
+                'Email support'
+            ]
         },
         {
-            name: 'GROWTH',
-            subtitle: 'IDEAL FOR GROWING BUSINESSES',
-            highlight: true,
+            name: 'Growth',
+            description: 'For growing businesses',
+            popular: true,
+            cta: 'Contact Sales',
             features: [
-                'EVERYTHING IN LITE',
-                '&',
-                'Up to 100 Employees',
-                'Free Payroll',
-                'Expense & Payroll reports',
-                '24 hour support'
-            ],
+                'Up to 100 employees',
+                'Full payroll suite',
+                'Advanced expense management',
+                'Smart reporting & analytics',
+                'Priority support',
+                'API access'
+            ]
         },
         {
-            name: 'ENTERPRISE',
-            subtitle: 'TAILORED SOLUTIONS FOR LARGE ORGANIZATIONS',
+            name: 'Enterprise',
+            description: 'For large organizations',
+            cta: 'Contact Sales',
             features: [
-                'EVERYTHING IN GROWTH',
-                '&',
-                'Unlimited Employees',
-                'ERP Integration',
-                'Management Reporting',
-                'Forecasting & Scenario Planning'
-            ],
+                'Unlimited employees',
+                'Custom integrations',
+                'Dedicated account manager',
+                'SLA guarantees',
+                'Custom contracts'
+            ]
         }
     ];
 
     return (
-        <Section id="pricing" className="bg-gray-50/50">
-            <div className="text-center max-w-2xl mx-auto mb-16">
-                <h2 className="text-3xl md:text-4xl font-bold text-gray-900 mb-6">
-                    Simple, Transparent Pricing
-                </h2>
-                <p className="text-lg text-gray-600">
-                    Choose the plan that fits your business size and needs.
-                </p>
-            </div>
+        <section id="pricing" className="bg-white py-24 md:py-32">
+            <div className="max-w-7xl mx-auto px-4 md:px-6">
+                {/* Header */}
+                <div className="text-center max-w-2xl mx-auto mb-16">
+                    <h2 className="text-4xl md:text-5xl font-bold text-gray-900 mb-4">
+                        Simple pricing
+                    </h2>
+                    <p className="text-lg md:text-xl text-gray-600">
+                        Choose the plan that fits your business
+                    </p>
+                </div>
 
-            <div className="grid md:grid-cols-3 gap-8 max-w-6xl mx-auto">
-                {plans.map((plan, idx) => (
-                    <div
-                        key={idx}
-                        className={`
-                            relative p-8 rounded-3xl border bg-white flex flex-col
-                            ${plan.highlight
-                                ? 'border-orange-300 shadow-xl scale-105 z-10'
-                                : 'border-gray-100 shadow-sm hover:shadow-md transition-shadow'
-                            }
-                        `}
-                    >
-                        {plan.highlight && (
-                            <div className="absolute top-0 left-1/2 -translate-x-1/2 -translate-y-1/2 bg-gradient-to-r from-zemoOrange to-amber-500 text-white text-xs font-bold px-4 py-1 rounded-full uppercase tracking-wider shadow-sm">
-                                Most Popular
-                            </div>
-                        )}
-
-                        <div className="mb-8">
-                            <h3 className="text-lg font-bold text-gray-900 mb-2">{plan.name}</h3>
-                            <p className="text-xs text-gray-500 uppercase tracking-wide font-semibold">
-                                {plan.subtitle}
-                            </p>
-                        </div>
-
-                        <ul className="space-y-3 mb-8 flex-1">
-                            {plan.features.map((feat, i) => (
-                                <li key={i} className={`flex items-start gap-3 text-sm ${feat === '&' || feat.includes('EVERYTHING')
-                                    ? 'text-zemoOrange font-bold justify-center'
-                                    : 'text-gray-600'
-                                    }`}>
-                                    {feat !== '&' && !feat.includes('EVERYTHING') && (
-                                        <Check size={16} className="text-zemoOrange flex-shrink-0 mt-0.5" />
-                                    )}
-                                    {feat}
-                                </li>
-                            ))}
-                        </ul>
-
-                        <button
-                            className={`
-                                w-full py-3 rounded-full font-semibold transition-all flex items-center justify-center gap-2
-                                ${plan.highlight
-                                    ? 'bg-gradient-to-r from-zemoOrange to-amber-500 hover:from-amber-600 hover:to-amber-600 text-white shadow-md shadow-orange-400/25'
-                                    : 'bg-white border-2 border-gray-200 text-gray-900 hover:border-zemoOrange hover:text-zemoOrange'
-                                }
-                            `}
+                {/* Pricing Cards */}
+                <div className="grid md:grid-cols-3 gap-8 max-w-6xl mx-auto">
+                    {plans.map((plan, idx) => (
+                        <motion.div
+                            key={idx}
+                            initial={{ opacity: 0, y: 20 }}
+                            whileInView={{ opacity: 1, y: 0 }}
+                            viewport={{ once: true }}
+                            transition={{ duration: 0.5, delay: idx * 0.1 }}
+                            className={`relative p-8 rounded-2xl border-2 ${plan.popular
+                                ? 'border-gray-900 shadow-lg'
+                                : 'border-gray-200'
+                                }`}
                         >
-                            Get Started <ArrowRight size={16} />
-                        </button>
-                    </div>
-                ))}
-            </div>
+                            {plan.popular && (
+                                <div className="absolute -top-4 left-1/2 -translate-x-1/2 px-4 py-1 bg-gray-900 text-white text-sm font-semibold rounded-full">
+                                    Most Popular
+                                </div>
+                            )}
 
-            <div className="mt-12 text-center">
-                <p className="text-sm text-gray-500">
-                    All plans include free updates and dedicated support.
-                    <a href="#contact" className="text-zemoOrange hover:underline ml-1">Need help choosing?</a>
-                </p>
+                            <div className="mb-6">
+                                <h3 className="text-xl font-bold text-gray-900 mb-2">{plan.name}</h3>
+                                <p className="text-sm text-gray-600">{plan.description}</p>
+                            </div>
+
+                            <ul className="space-y-3 mb-8">
+                                {plan.features.map((feature, i) => (
+                                    <li key={i} className="flex items-start gap-3">
+                                        <div className="flex-shrink-0 w-5 h-5 rounded-full bg-gray-900 flex items-center justify-center mt-0.5">
+                                            <Check size={12} className="text-white" />
+                                        </div>
+                                        <span className="text-gray-700">{feature}</span>
+                                    </li>
+                                ))}
+                            </ul>
+
+                            <button className={`w-full py-3 rounded-xl font-semibold transition-colors ${plan.popular
+                                ? 'bg-gray-900 hover:bg-gray-800 text-white'
+                                : 'bg-white hover:bg-gray-50 text-gray-900 border-2 border-gray-200'
+                                }`}>
+                                {plan.cta}
+                            </button>
+                        </motion.div>
+                    ))}
+                </div>
             </div>
-        </Section>
+        </section>
     );
 };
 

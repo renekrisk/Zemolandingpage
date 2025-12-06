@@ -1,27 +1,38 @@
 import React from 'react';
+import { motion } from 'framer-motion';
 
 const TrustStrip: React.FC = () => {
+    const companies = [
+        'Safaricom',
+        'KCB Bank',
+        'Equity Bank',
+        'Co-operative Bank',
+        'Bamburi Cement',
+        'EABL',
+        'Tusker Mattresses',
+        'Kenya Airways'
+    ];
+
     return (
-        <section className="py-10 border-b border-gray-100 bg-white overflow-hidden">
-            <div className="max-w-7xl mx-auto px-4 md:px-6 flex flex-col md:flex-row items-center gap-8 md:gap-16">
-                <p className="text-sm font-semibold text-gray-500 whitespace-nowrap">
-                    Trusted by over 500 finance teams
+        <section className="bg-gray-50 py-12 overflow-hidden">
+            <div className="max-w-7xl mx-auto px-4 md:px-6">
+                <p className="text-center text-sm text-gray-500 mb-8">
+                    Trusted by 500+ businesses across Kenya
                 </p>
 
-                <div className="flex-1 overflow-hidden relative w-full">
-                    <div className="flex gap-12 items-center animate-scroll whitespace-nowrap opacity-50 grayscale hover:grayscale-0 transition-all duration-500">
-                        {/* Placeholders for logos */}
-                        {[1, 2, 3, 4, 5, 6, 7, 8].map((i) => (
-                            <div key={i} className="h-8 w-24 bg-gray-200 rounded flex-shrink-0" />
-                        ))}
-                        {/* Duplicate for seamless scroll if we added animation, keeping static for now to be safe or simple marquee */}
-                        {[1, 2, 3, 4, 5, 6, 7, 8].map((i) => (
-                            <div key={`dup-${i}`} className="h-8 w-24 bg-gray-200 rounded flex-shrink-0 md:hidden" />
+                <div className="relative">
+                    <div className="flex gap-12 animate-marquee">
+                        {[...companies, ...companies].map((company, idx) => (
+                            <div
+                                key={idx}
+                                className="flex-shrink-0 px-8 py-4 bg-white rounded-xl border border-gray-100 shadow-sm"
+                            >
+                                <span className="text-gray-600 font-medium whitespace-nowrap">
+                                    {company}
+                                </span>
+                            </div>
                         ))}
                     </div>
-                    {/* Fade edges */}
-                    <div className="absolute top-0 left-0 w-12 h-full bg-gradient-to-r from-white to-transparent" />
-                    <div className="absolute top-0 right-0 w-12 h-full bg-gradient-to-l from-white to-transparent" />
                 </div>
             </div>
         </section>

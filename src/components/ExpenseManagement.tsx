@@ -1,108 +1,128 @@
 import React from 'react';
-import Section from './Section';
-import { ShieldCheck, Zap, Receipt, CreditCard } from 'lucide-react';
 import { motion } from 'framer-motion';
+import { Check, TrendingDown, Lock, BarChart2 } from 'lucide-react';
 
 const ExpenseManagement: React.FC = () => {
+    const features = [
+        {
+            icon: TrendingDown,
+            title: 'Reduce Costs',
+            desc: 'Cut unnecessary spending'
+        },
+        {
+            icon: Lock,
+            title: 'Spend Controls',
+            desc: 'Set limits & rules'
+        },
+        {
+            icon: BarChart2,
+            title: 'Analytics',
+            desc: 'Track every expense'
+        }
+    ];
+
+    const benefits = [
+        'Real-time expense approvals',
+        'Automated categorization',
+        'Multi-currency support',
+        'Detailed spend analytics'
+    ];
+
     return (
-        <Section id="expenses">
-            <div className="grid lg:grid-cols-2 gap-16 items-center">
-                {/* Visual */}
-                <motion.div
-                    initial={{ opacity: 0, y: 20 }}
-                    whileInView={{ opacity: 1, y: 0 }}
-                    viewport={{ once: true }}
-                    className="flex justify-center"
-                >
-                    <div className="relative w-full max-w-md bg-white rounded-[2.5rem] shadow-xl border border-gray-100 p-2">
-                        <div className="bg-zemoBlue rounded-[2rem] overflow-hidden aspect-[4/5] relative text-white p-8">
-                            <div className="mb-8">
-                                <div className="text-white/60 text-sm mb-1">Total Spend</div>
-                                <div className="text-4xl font-bold">KES 450k</div>
-                            </div>
-                            <div className="grid grid-cols-2 gap-4 mb-8">
-                                <div className="bg-white/10 backdrop-blur rounded-2xl p-4">
-                                    <div className="text-white/60 text-xs mb-1">Limit</div>
-                                    <div className="font-semibold">500k</div>
-                                </div>
-                                <div className="bg-white/10 backdrop-blur rounded-2xl p-4">
-                                    <div className="text-white/60 text-xs mb-1">Available</div>
-                                    <div className="font-semibold">50k</div>
-                                </div>
-                            </div>
-                            <div className="space-y-3">
-                                <div className="text-xs font-bold uppercase tracking-widest text-white/40 mb-4">Recent</div>
-                                {[1, 2, 3].map((i) => (
-                                    <div key={i} className="flex items-center justify-between p-3 bg-white/5 rounded-xl border border-white/10">
-                                        <div className="flex items-center gap-3">
-                                            <div className="w-8 h-8 bg-white/10 rounded-full flex items-center justify-center">
-                                                <Receipt size={14} />
-                                            </div>
-                                            <div className="w-20 h-2 bg-white/20 rounded-full" />
-                                        </div>
-                                        <div className="w-12 h-2 bg-white/20 rounded-full" />
-                                    </div>
-                                ))}
-                            </div>
+        <section className="relative bg-gradient-to-br from-cyan-500 via-cyan-400 to-blue-500 text-white overflow-hidden">
+            {/* Decorative elements */}
+            <div className="absolute top-0 left-0 w-1/2 h-1/2 bg-white/5 rounded-full blur-3xl" />
+            <div className="absolute bottom-0 right-0 w-1/3 h-1/3 bg-white/5 rounded-full blur-3xl" />
 
-                            {/* Testimonial Bubble */}
-                            <div className="absolute bottom-6 left-6 right-6 bg-white text-gray-900 p-4 rounded-2xl shadow-lg">
-                                <p className="text-sm italic mb-3">"We've cut our expense processing time by 80%."</p>
-                                <div className="flex items-center gap-2">
-                                    <div className="w-6 h-6 bg-zemoYellow text-zemoBlue rounded-full flex items-center justify-center text-[10px] font-bold">CS</div>
-                                    <span className="text-xs font-bold">Chris Sang</span>
-                                </div>
-                            </div>
+            <div className="relative z-10 max-w-7xl mx-auto px-4 md:px-6 py-24 md:py-32">
+                <div className="grid lg:grid-cols-2 gap-12 lg:gap-16 items-center">
+                    {/* Left - Image (reversed order) */}
+                    <motion.div
+                        initial={{ opacity: 0, scale: 0.9 }}
+                        whileInView={{ opacity: 1, scale: 1 }}
+                        viewport={{ once: true }}
+                        transition={{ duration: 0.7 }}
+                        className="relative lg:order-1 order-2"
+                    >
+                        <div className="relative max-w-lg lg:max-w-xl mx-auto">
+                            <motion.img
+                                src="/assets/laptop-expense.png"
+                                alt="Expense Dashboard"
+                                className="w-full drop-shadow-2xl"
+                                animate={{
+                                    y: [0, -10, 0],
+                                }}
+                                transition={{
+                                    duration: 5,
+                                    repeat: Infinity,
+                                    ease: "easeInOut"
+                                }}
+                            />
                         </div>
-                    </div>
-                </motion.div>
+                    </motion.div>
 
-                {/* Content */}
-                <div>
-                    <div className="inline-block px-3 py-1 bg-yellow-50 text-yellow-700 text-xs font-bold uppercase tracking-wider rounded-full mb-6">
-                        Expense Management
-                    </div>
-                    <h2 className="text-3xl md:text-4xl font-bold text-gray-900 mb-6 leading-tight">
-                        Stop Losing Track of Business Expenses
-                    </h2>
-                    <p className="text-lg text-gray-600 mb-8 leading-relaxed">
-                        Empower your team with spend limits, real-time tracking, and instant approvals – from petty cash to payroll, all in one Kenyan platform.
-                    </p>
+                    {/* Right - Content */}
+                    <motion.div
+                        initial={{ opacity: 0, x: 30 }}
+                        whileInView={{ opacity: 1, x: 0 }}
+                        viewport={{ once: true }}
+                        transition={{ duration: 0.6 }}
+                        className="lg:order-2 order-1"
+                    >
+                        <div className="inline-block px-4 py-2 bg-white/20 backdrop-blur-sm rounded-full text-sm font-medium mb-6">
+                            Smart Spending
+                        </div>
 
-                    <div className="grid sm:grid-cols-2 gap-4 mb-10">
-                        {[
-                            'Smart Corporate Cards',
-                            'Petty Cash Controls',
-                            'One Dashboard, All Expenses',
-                            'Auto-Reconciliation',
-                            'Fraud Protection'
-                        ].map((item, idx) => (
-                            <div key={idx} className="flex items-center gap-3">
-                                <div className="w-2 h-2 rounded-full bg-zemoYellow" />
-                                <span className="text-gray-700 font-medium">{item}</span>
-                            </div>
-                        ))}
-                    </div>
+                        <h2 className="text-4xl md:text-5xl lg:text-6xl font-bold mb-6 leading-tight">
+                            Control every shilling spent
+                        </h2>
 
-                    <div className="bg-white p-8 rounded-2xl border border-gray-100">
-                        <h4 className="font-bold text-gray-900 mb-6">Why Top Brands use Zemo</h4>
-                        <div className="grid sm:grid-cols-2 gap-y-4 gap-x-8">
-                            {[
-                                { icon: ShieldCheck, text: 'Total Spend Control' },
-                                { icon: Zap, text: 'Instant Approvals' },
-                                { icon: Receipt, text: 'Snap & Auto-Match' },
-                                { icon: CreditCard, text: 'Works with M-Pesa' }
-                            ].map((feat, idx) => (
-                                <div key={idx} className="flex items-center gap-3 text-sm text-gray-600">
-                                    <feat.icon size={18} className="text-zemoBlue" />
-                                    {feat.text}
-                                </div>
+                        <p className="text-xl md:text-2xl text-cyan-50 mb-10 leading-relaxed">
+                            Track and manage all business expenses in one powerful dashboard with real-time insights.
+                        </p>
+
+                        {/* Benefits */}
+                        <div className="space-y-3 mb-10">
+                            {benefits.map((benefit, idx) => (
+                                <motion.div
+                                    key={idx}
+                                    initial={{ opacity: 0, x: 20 }}
+                                    whileInView={{ opacity: 1, x: 0 }}
+                                    viewport={{ once: true }}
+                                    transition={{ duration: 0.5, delay: idx * 0.1 }}
+                                    className="flex items-center gap-3"
+                                >
+                                    <div className="flex-shrink-0 w-6 h-6 rounded-full bg-white/20 flex items-center justify-center">
+                                        <Check size={14} className="text-white" />
+                                    </div>
+                                    <span className="text-lg text-white/90">{benefit}</span>
+                                </motion.div>
                             ))}
                         </div>
-                    </div>
+
+                        {/* Features */}
+                        <div className="grid grid-cols-1 sm:grid-cols-3 gap-6">
+                            {features.map((feature, idx) => (
+                                <motion.div
+                                    key={idx}
+                                    initial={{ opacity: 0, y: 20 }}
+                                    whileInView={{ opacity: 1, y: 0 }}
+                                    viewport={{ once: true }}
+                                    transition={{ duration: 0.5, delay: 0.4 + (idx * 0.1) }}
+                                    className="text-center"
+                                >
+                                    <div className="w-12 h-12 bg-white/20 backdrop-blur-sm rounded-xl flex items-center justify-center mx-auto mb-3">
+                                        <feature.icon size={24} className="text-white" />
+                                    </div>
+                                    <div className="text-sm font-semibold mb-1">{feature.title}</div>
+                                    <div className="text-xs text-cyan-100">{feature.desc}</div>
+                                </motion.div>
+                            ))}
+                        </div>
+                    </motion.div>
                 </div>
             </div>
-        </Section>
+        </section>
     );
 };
 
