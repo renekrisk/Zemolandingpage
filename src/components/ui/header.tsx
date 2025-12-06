@@ -14,9 +14,9 @@ export function Header() {
     const scrolled = useScroll(10);
 
     const solutionsLinks = [
-        { label: 'Free Payroll', href: '/#payroll' },
-        { label: 'Expense Management', href: '/#expenses' },
-        { label: 'Smart Reporting', href: '/#reporting' },
+        { label: 'Free Payroll', href: '#payroll' },
+        { label: 'Expense Management', href: '#expenses' },
+        { label: 'Smart Reporting', href: '#reporting' },
     ];
 
     const resourcesLinks = [
@@ -77,27 +77,28 @@ export function Header() {
                             {solutionsOpen && (
                                 <div className="absolute top-full left-0 mt-1 bg-white rounded-lg shadow-lg border border-gray-200 py-2 min-w-[200px]">
                                     {solutionsLinks.map((link) => (
-                                        <Link
+                                        <a
                                             key={link.label}
-                                            to={link.href}
+                                            href={link.href}
                                             className="block px-4 py-2 text-sm text-gray-700 hover:bg-gray-50 transition-colors"
+                                            onClick={() => setSolutionsOpen(false)}
                                         >
                                             {link.label}
-                                        </Link>
+                                        </a>
                                     ))}
                                 </div>
                             )}
                         </div>
 
-                        <Link to="/#features" className={buttonVariants({ variant: 'ghost' })}>
+                        <a href="#features" className={buttonVariants({ variant: 'ghost' })}>
                             Features
-                        </Link>
-                        <Link to="/#pricing" className={buttonVariants({ variant: 'ghost' })}>
+                        </a>
+                        <a href="#pricing" className={buttonVariants({ variant: 'ghost' })}>
                             Pricing
-                        </Link>
-                        <Link to="/#about" className={buttonVariants({ variant: 'ghost' })}>
+                        </a>
+                        <a href="#about" className={buttonVariants({ variant: 'ghost' })}>
                             About Us
-                        </Link>
+                        </a>
 
                         {/* Resources Dropdown */}
                         <div className="relative" onMouseEnter={() => setResourcesOpen(true)} onMouseLeave={() => setResourcesOpen(false)}>
@@ -120,9 +121,9 @@ export function Header() {
                             )}
                         </div>
 
-                        <Link to="/#contact" className={buttonVariants({ variant: 'ghost' })}>
+                        <a href="#contact" className={buttonVariants({ variant: 'ghost' })}>
                             Contact Us
-                        </Link>
+                        </a>
 
                         <Button variant="outline">Sign In</Button>
                         <Button>Get Started</Button>
@@ -161,38 +162,38 @@ export function Header() {
                                 <div className="px-3 py-2">
                                     <div className="text-xs font-semibold text-gray-500 uppercase mb-2">Solutions</div>
                                     {solutionsLinks.map((link) => (
-                                        <Link
+                                        <a
                                             key={link.label}
-                                            to={link.href}
+                                            href={link.href}
                                             className="block px-2 py-2 text-sm text-gray-700 hover:bg-gray-50 rounded-lg"
                                             onClick={() => setOpen(false)}
                                         >
                                             {link.label}
-                                        </Link>
+                                        </a>
                                     ))}
                                 </div>
 
-                                <Link
-                                    to="/#features"
+                                <a
+                                    href="#features"
                                     className="flex items-center w-full px-3 py-2.5 text-sm font-medium text-gray-700 hover:bg-gray-100 rounded-lg transition-colors"
                                     onClick={() => setOpen(false)}
                                 >
                                     Features
-                                </Link>
-                                <Link
-                                    to="/#pricing"
+                                </a>
+                                <a
+                                    href="#pricing"
                                     className="flex items-center w-full px-3 py-2.5 text-sm font-medium text-gray-700 hover:bg-gray-100 rounded-lg transition-colors"
                                     onClick={() => setOpen(false)}
                                 >
                                     Pricing
-                                </Link>
-                                <Link
-                                    to="/#about"
+                                </a>
+                                <a
+                                    href="#about"
                                     className="flex items-center w-full px-3 py-2.5 text-sm font-medium text-gray-700 hover:bg-gray-100 rounded-lg transition-colors"
                                     onClick={() => setOpen(false)}
                                 >
                                     About Us
-                                </Link>
+                                </a>
 
                                 {/* Resources Section */}
                                 <div className="px-3 py-2">
@@ -209,13 +210,13 @@ export function Header() {
                                     ))}
                                 </div>
 
-                                <Link
-                                    to="/#contact"
+                                <a
+                                    href="#contact"
                                     className="flex items-center w-full px-3 py-2.5 text-sm font-medium text-gray-700 hover:bg-gray-100 rounded-lg transition-colors"
                                     onClick={() => setOpen(false)}
                                 >
                                     Contact Us
-                                </Link>
+                                </a>
                             </div>
 
                             <div className="my-3 border-t border-gray-200" />

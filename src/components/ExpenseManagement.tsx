@@ -29,7 +29,7 @@ const ExpenseManagement: React.FC = () => {
     ];
 
     return (
-        <section className="relative bg-gradient-to-br from-cyan-500 via-cyan-400 to-blue-500 text-white overflow-hidden">
+        <section id="expenses" className="relative bg-gradient-to-br from-cyan-500 via-cyan-400 to-blue-500 text-white overflow-hidden">
             {/* Decorative elements */}
             <div className="absolute top-0 left-0 w-1/2 h-1/2 bg-white/5 rounded-full blur-3xl" />
             <div className="absolute bottom-0 right-0 w-1/3 h-1/3 bg-white/5 rounded-full blur-3xl" />
