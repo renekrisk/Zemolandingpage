@@ -1,4 +1,5 @@
 import React, { memo } from 'react';
+import { Link } from 'react-router-dom';
 import { motion } from 'framer-motion';
 import { ArrowRight, Check } from 'lucide-react';
 
@@ -66,21 +67,25 @@ const HeroEnhanced: React.FC = () => {
 
                         {/* CTA */}
                         <div className="flex flex-col sm:flex-row gap-3">
-                            <motion.button
-                                whileHover={{ scale: 1.02 }}
-                                whileTap={{ scale: 0.98 }}
-                                className="px-6 py-3 bg-gray-900 hover:bg-gray-800 text-white font-semibold rounded-xl transition-colors flex items-center justify-center gap-2 group shadow-lg shadow-gray-900/10"
-                            >
-                                Get Started Free
-                                <ArrowRight size={16} className="group-hover:translate-x-1 transition-transform" />
-                            </motion.button>
-                            <motion.button
-                                whileHover={{ scale: 1.02 }}
-                                whileTap={{ scale: 0.98 }}
-                                className="px-6 py-3 bg-white hover:bg-gray-50 text-gray-900 font-semibold rounded-xl transition-colors border-2 border-gray-200"
-                            >
-                                Watch Demo
-                            </motion.button>
+                            <Link to="/signup">
+                                <motion.button
+                                    whileHover={{ scale: 1.02 }}
+                                    whileTap={{ scale: 0.98 }}
+                                    className="px-6 py-3 bg-gray-900 hover:bg-gray-800 text-white font-semibold rounded-xl transition-colors flex items-center justify-center gap-2 group shadow-lg shadow-gray-900/10"
+                                >
+                                    Get Started Free
+                                    <ArrowRight size={16} className="group-hover:translate-x-1 transition-transform" />
+                                </motion.button>
+                            </Link>
+                            <Link to="/book-demo">
+                                <motion.button
+                                    whileHover={{ scale: 1.02 }}
+                                    whileTap={{ scale: 0.98 }}
+                                    className="px-6 py-3 bg-white hover:bg-gray-50 text-gray-900 font-semibold rounded-xl transition-colors border-2 border-gray-200"
+                                >
+                                    Watch Demo
+                                </motion.button>
+                            </Link>
                         </div>
 
                         {/* Social proof */}

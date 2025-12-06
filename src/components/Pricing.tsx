@@ -1,4 +1,5 @@
 import React from 'react';
+import { Link } from 'react-router-dom';
 import { motion } from 'framer-motion';
 import { Check } from 'lucide-react';
 
@@ -19,7 +20,7 @@ const Pricing: React.FC = () => {
             name: 'Growth',
             description: 'For growing businesses',
             popular: true,
-            cta: 'Contact Sales',
+            cta: 'Get Started',
             features: [
                 'Up to 100 employees',
                 'Full payroll suite',
@@ -32,7 +33,7 @@ const Pricing: React.FC = () => {
         {
             name: 'Enterprise',
             description: 'For large organizations',
-            cta: 'Contact Sales',
+            cta: 'Get Started',
             features: [
                 'Unlimited employees',
                 'Custom integrations',
@@ -92,12 +93,14 @@ const Pricing: React.FC = () => {
                                 ))}
                             </ul>
 
-                            <button className={`w-full py-3 rounded-xl font-semibold transition-colors ${plan.popular
-                                ? 'bg-gray-900 hover:bg-gray-800 text-white'
-                                : 'bg-white hover:bg-gray-50 text-gray-900 border-2 border-gray-200'
-                                }`}>
-                                {plan.cta}
-                            </button>
+                            <Link to="/signup" className="w-full block">
+                                <button className={`w-full py-3 rounded-xl font-semibold transition-colors ${plan.popular
+                                    ? 'bg-gray-900 hover:bg-gray-800 text-white'
+                                    : 'bg-white hover:bg-gray-50 text-gray-900 border-2 border-gray-200'
+                                    }`}>
+                                    {plan.cta}
+                                </button>
+                            </Link>
                         </motion.div>
                     ))}
                 </div>
