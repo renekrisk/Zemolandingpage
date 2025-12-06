@@ -1,7 +1,7 @@
 import React from 'react';
 import { motion } from 'framer-motion';
 import { Calendar } from 'lucide-react';
-import { Header } from '../components/ui/header';
+import { SimpleHeader } from '../components/ui/simple-header';
 import Footer from '../components/Footer';
 
 const BookingPage: React.FC = () => {
@@ -39,7 +39,7 @@ const BookingPage: React.FC = () => {
 
     return (
         <div className="min-h-screen bg-white">
-            <Header />
+            <SimpleHeader />
 
             <section className="py-24 md:py-32">
                 <div className="max-w-7xl mx-auto px-4 md:px-6">

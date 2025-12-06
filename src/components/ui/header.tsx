@@ -75,17 +75,19 @@ export function Header() {
                                 <ChevronDown size={16} className={cn("transition-transform", solutionsOpen && "rotate-180")} />
                             </button>
                             {solutionsOpen && (
-                                <div className="absolute top-full left-0 mt-1 bg-white rounded-lg shadow-lg border border-gray-200 py-2 min-w-[200px]">
-                                    {solutionsLinks.map((link) => (
-                                        <a
-                                            key={link.label}
-                                            href={link.href}
-                                            className="block px-4 py-2 text-sm text-gray-700 hover:bg-gray-50 transition-colors"
-                                            onClick={() => setSolutionsOpen(false)}
-                                        >
-                                            {link.label}
-                                        </a>
-                                    ))}
+                                <div className="absolute top-full left-0 pt-2 z-50">
+                                    <div className="bg-white rounded-lg shadow-xl border border-gray-200 py-2 min-w-[200px]">
+                                        {solutionsLinks.map((link) => (
+                                            <a
+                                                key={link.label}
+                                                href={link.href}
+                                                className="block px-4 py-2.5 text-sm text-gray-700 hover:bg-gray-50 transition-colors"
+                                                onClick={() => setSolutionsOpen(false)}
+                                            >
+                                                {link.label}
+                                            </a>
+                                        ))}
+                                    </div>
                                 </div>
                             )}
                         </div>
@@ -107,16 +109,18 @@ export function Header() {
                                 <ChevronDown size={16} className={cn("transition-transform", resourcesOpen && "rotate-180")} />
                             </button>
                             {resourcesOpen && (
-                                <div className="absolute top-full left-0 mt-1 bg-white rounded-lg shadow-lg border border-gray-200 py-2 min-w-[160px]">
-                                    {resourcesLinks.map((link) => (
-                                        <Link
-                                            key={link.label}
-                                            to={link.href}
-                                            className="block px-4 py-2 text-sm text-gray-700 hover:bg-gray-50 transition-colors"
-                                        >
-                                            {link.label}
-                                        </Link>
-                                    ))}
+                                <div className="absolute top-full left-0 pt-2 z-50">
+                                    <div className="bg-white rounded-lg shadow-xl border border-gray-200 py-2 min-w-[160px]">
+                                        {resourcesLinks.map((link) => (
+                                            <Link
+                                                key={link.label}
+                                                to={link.href}
+                                                className="block px-4 py-2.5 text-sm text-gray-700 hover:bg-gray-50 transition-colors"
+                                            >
+                                                {link.label}
+                                            </Link>
+                                        ))}
+                                    </div>
                                 </div>
                             )}
                         </div>
