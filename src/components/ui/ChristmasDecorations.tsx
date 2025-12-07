@@ -1,4 +1,4 @@
-import React, { useRef, useEffect, useState } from 'react';
+import React, { useRef, useEffect } from 'react';
 import { motion } from 'framer-motion';
 
 const ChristmasDecorations: React.FC = () => {
@@ -49,7 +49,6 @@ const ChristmasDecorations: React.FC = () => {
 const PhysicsOrnament = () => {
     const canvasRef = useRef<HTMLCanvasElement>(null);
     const baubleRef = useRef<HTMLDivElement>(null); // DOM Element for the bauble
-    const [isDragging, setIsDragging] = useState(false);
 
     // Physics state ref
     const physics = useRef({
@@ -215,7 +214,6 @@ const PhysicsOrnament = () => {
         const handleMouseUp = () => {
             if (dragRef.current.isDragging) {
                 dragRef.current.isDragging = false;
-                setIsDragging(false);
             }
         };
 
@@ -237,7 +235,6 @@ const PhysicsOrnament = () => {
         // but since we are dragging, we want to consume this event.
         e.stopPropagation();
         dragRef.current.isDragging = true;
-        setIsDragging(true);
     };
 
     return (
