@@ -1,42 +1,35 @@
 import React from 'react';
+import { Marquee } from './ui/marquee';
 
 const TrustStrip: React.FC = () => {
-    const companies = [
-        'Coca-Cola',
-        'M-Pesa',
-        'Visa',
-        'Absa',
-        'Luton Hospital',
-        'Enzaribe',
-        'Brookside',
-        'Bidco',
-        'Credit Bank'
+    // Partner logos displayed in the marquee
+    const partnerLogos = [
+        '/assets/truststrip/bidco.png',
+        '/assets/truststrip/brookside.png',
+        '/assets/truststrip/cocacola.png',
+        '/assets/truststrip/mpesa.png',
+        '/assets/truststrip/tours.png',
+        '/assets/truststrip/visa.png',
+        '/assets/truststrip/zaribee.png'
     ];
 
     return (
-        <section className="bg-gray-50 py-12 overflow-hidden border-t border-b border-gray-100">
-            <div className="max-w-7xl mx-auto px-4 md:px-6">
-                <p className="text-center text-sm font-medium mb-8">
-                    <span className="bg-gradient-to-r from-zemoOrange via-zemoCyan to-zemoBlue bg-clip-text text-transparent">
-                        Trusted by 500+ businesses across Kenya
-                    </span>
-                </p>
-
-                <div className="relative">
-                    <div className="flex gap-12 animate-marquee">
-                        {[...companies, ...companies].map((company, idx) => (
-                            <div
-                                key={idx}
-                                className="flex-shrink-0 px-8 py-4 bg-white rounded-xl border border-gray-100 shadow-sm"
-                            >
-                                <span className="text-gray-600 font-medium whitespace-nowrap">
-                                    {company}
-                                </span>
-                            </div>
-                        ))}
+        <section className="bg-white border-b border-gray-100">
+            {/* Scrolling marquee that pauses on hover */}
+            <Marquee pauseOnHover speed={40} className="py-4">
+                {partnerLogos.map((logoPath, index) => (
+                    <div
+                        key={index}
+                        className="relative h-16 w-32 mx-6 flex items-center justify-center"
+                    >
+                        <img
+                            src={logoPath}
+                            alt={`Partner ${index + 1}`}
+                            className="max-h-full max-w-full object-contain opacity-70 hover:opacity-100 transition-opacity"
+                        />
                     </div>
-                </div>
-            </div>
+                ))}
+            </Marquee>
         </section>
     );
 };

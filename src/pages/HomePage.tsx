@@ -12,6 +12,7 @@ const SmartReporting = lazy(() => import('../components/SmartReporting'))
 const Features = lazy(() => import('../components/Features'))
 const SmartReportingHighlight = lazy(() => import('../components/SmartReportingHighlight'))
 const Pricing = lazy(() => import('../components/Pricing'))
+const Testimonials = lazy(() => import('../components/Testimonials'))
 const GlobalCTA = lazy(() => import('../components/GlobalCTA'))
 const Contact = lazy(() => import('../components/Contact'))
 const Footer = lazy(() => import('../components/Footer'))
@@ -47,6 +48,7 @@ function HomePage() {
                 <Features />
                 <SmartReportingHighlight />
                 <Pricing />
+                <Testimonials />
                 <GlobalCTA />
                 <Contact />
                 <Footer />
